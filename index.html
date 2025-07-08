@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator RPP Pembelajaran Mendalam 2025</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #0d9488; /* Teal 600 */
+            --primary-hover: #0f766e; /* Teal 700 */
+            --secondary-color: #475569; /* Slate 600 */
+            --secondary-hover: #334155; /* Slate 700 */
+            --background-light: #f0f9ff; /* Light Blue-ish White */
+            --card-background: #ffffff;
+            --text-dark: #1e293b; /* Slate 800 */
+            --text-light: #475569; /* Slate 600 */
+            --border-color: #cbd5e1; /* Slate 300 */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-light);
+            color: var(--text-dark);
+        }
+        .login-screen {
+            background: linear-gradient(135deg, #0d9488, #14b8a6);
+        }
+        .login-card {
+            background: var(--card-background);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        .main-app {
+            display: none;
+        }
+        .form-section, .output-section {
+            background-color: var(--card-background);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.07);
+            border: 1px solid #e2e8f0;
+        }
+        .form-label {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.2);
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+        }
+        .btn:active {
+            transform: scale(0.98);
+        }
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        .btn-secondary:hover {
+            background-color: var(--secondary-hover);
+        }
+         .btn-success {
+            background-color: #16a34a;
+            color: white;
+        }
+        .btn-success:hover {
+            background-color: #15803d;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        th {
+            background-color: #f8fafc;
+            font-weight: 600;
+        }
+        .marquee-container {
+            background-color: #1e293b;
+            color: white;
+            padding: 0.75rem;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .marquee-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 20s linear infinite;
+        }
+        @keyframes marquee {
+            0%   { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="login-screen" class="min-h-screen flex items-center justify-center login-screen">
+        <div class="login-card w-full max-w-md">
+            <h1 class="text-3xl font-bold text-center text-gray-800 mb-2">GENERATOR RPP PM</h1>
+            <p class="text-center text-gray-500 mb-6">Pendekatan Pembelajaran Mendalam</p>
+            <div id="login-error" class="text-red-500 text-center mb-4 hidden">Username atau Password salah.</div>
+     
+           <div class="space-y-4">
+                <div>
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" id="username" class="form-input" placeholder="Masukkan username">
+                </div>
+             
+               <div>
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" id="password" class="form-input" placeholder="Masukkan password">
+                </div>
+                <button id="login-btn" class="btn btn-primary w-full">Login</button>
+            </div>
+  
+       </div>
+    </div>
+
+    <div id="main-app" class="main-app">
+        <header class="bg-white shadow-sm p-4 sticky top-0 z-10">
+            <div class="container mx-auto flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <img src="https://smpmaarifimogiri.sch.id/wp-content/uploads/2025/02/Kerangka-kerja-pembelajaran-mendalam.png" alt="Deep Learning" class="h-10">
+                    <h1 class="text-2xl font-bold" style="color: var(--primary-color);">GENERATOR RPP PM</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                     <button id="help-btn" class="btn btn-secondary">
+                        <i class="fas fa-question-circle mr-2"></i> Help
+                    </button>
+                    <button id="logout-btn" class="btn btn-secondary bg-red-600 hover:bg-red-700">
+                         <i class="fas fa-sign-out-alt mr-2"></i> Log Out
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="marquee-container">
+            <div class="marquee-content">
+                   <span class="font-semibold">Pengembang: Alvida Nida, S.Pd., Gr.</span>
+                <span class="mx-4">|</span>
+                <span><i class="fab fa-whatsapp text-green-400"></i> 082366677777</span>
+                <span class="mx-4">|</span>
+                <span><i class="fab fa-instagram text-pink-400"></i> alvidanida56</span>
+         </div>
+        </div>
+
+        <main class="container mx-auto p-4 md:p-6">
+            <section class="form-section" id="section-1">
+                <h2 class="text-xl font-bold mb-4 border-b pb-2" style="border-color: var(--primary-color);">1. Identitas Modul & Sekolah</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="nama-sekolah" class="form-label">a. Nama Sekolah</label>
+                        <input type="text" id="nama-sekolah" class="form-input" placeholder="Contoh: SDN Regol 6">
+                    </div>
+                    <div>
+                        <label for="jenjang-sekolah" class="form-label">b. Jenjang Sekolah</label>
+                        <select id="jenjang-sekolah" class="form-select">
+                            <option value="">Pilih Jenjang</option>
+                            <option value="SD">SD/MI</option>
+                               <option value="SMP">SMP/MTs</option>
+                            <option value="SMA">SMA/MA/SMK</option>
+                        </select>
+                    </div>
+            
+                     <div>
+                        <label for="mata-pelajaran" class="form-label">c. Mata Pelajaran</label>
+                        <input type="text" id="mata-pelajaran" class="form-input" placeholder="Contoh: IPAS">
+                    </div>
+                    <div>
+                        <label for="kelas-semester" class="form-label">d. Kelas / Semester</label>
+                        <select id="kelas-semester" class="form-select" disabled>
+                            <option>Pilih jenjang terlebih dahulu</option>
+                        </select>
+                
+            </div>
+                    <div>
+                        <label for="fase" class="form-label">e. Fase</label>
+                        <select id="fase" class="form-select" disabled>
+                           <option>Pilih jenjang terlebih dahulu</option>
+                        </select>
+                   
+         </div>
+                    <div>
+                        <label for="alokasi-waktu" class="form-label">f. Alokasi Waktu Per Pertemuan</label>
+                        <select id="alokasi-waktu" class="form-select">
+                            <option value="">Pilih Alokasi Waktu</option>
+                            <option value="1 JP x 35 Menit">1 JP x 35 Menit</option>
+                               <option value="1 JP x 40 Menit">1 JP x 40 Menit</option>
+							<option value="1 JP x 45 Menit">1 JP x 45 Menit</option>
+							<option value="2 JP x 35 Menit">2 JP x 35 Menit</option>
+                            <option value="2 JP x 40 Menit">2 JP x 40 Menit</option>
+							<option value="2 JP x 45 Menit">2 JP x 45 Menit</option>
+							<option value="3 JP x 35 Menit">3 JP x 35 Menit</option>
+                            <option value="3 JP x 40 Menit">3 JP x 40 Menit</option>
+							<option value="3 JP x 45 Menit">3 JP x 45 Menit</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="nama-guru" class="form-label">h. Nama Guru / NIP</label>
+                        <input type="text" id="nama-guru" class="form-input" placeholder="Contoh: Alvida Nida, S.Pd. / NIP: 19...">
+                    </div>
+                     <div>
+                      
+                  <label for="nama-kepsek" class="form-label">i. Nama Kepala Sekolah / NIP</label>
+                        <input type="text" id="nama-kepsek" class="form-input" placeholder="Contoh: Imam Hanafi, M.Pd. / NIP: 19...">
+                    </div>
+                </div>
+
+                <h3 class="text-lg font-semibold mt-8 mb-4 border-t pt-4">Identifikasi Awal Peserta Didik</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="md:col-span-2">
+                        <label for="pengetahuan-awal" class="form-label">a. Pengetahuan Awal Peserta Didik</label>
+                        <textarea id="pengetahuan-awal" class="form-textarea" rows="3">Sebagian besar peserta didik belum memiliki pengetahuan dasar tentang materi yang akan diajarkan. Beberapa siswa mungkin pernah mendengarnya secara sekilas, namun belum memahami konsepnya secara utuh.</textarea>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="minat-siswa" class="form-label">b. Minat Peserta Didik</label>
+                        <textarea id="minat-siswa" class="form-textarea" rows="3">Mayoritas peserta didik menunjukkan minat pada kegiatan praktis, visual (video/gambar), dan kerja kelompok. Sebagian kecil lebih menyukai pembelajaran mandiri melalui bacaan.</textarea>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="latar-belakang" class="form-label">c. Latar Belakang Peserta Didik</label>
+                        <textarea id="latar-belakang" class="form-textarea" rows="3">Peserta didik berasal dari latar belakang keluarga dan sosial ekonomi yang beragam. Sebagian besar tinggal di lingkungan perkotaan dan akrab dengan penggunaan gawai dalam kehidupan sehari-hari.</textarea>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="kebutuhan-belajar" class="form-label">d. Kebutuhan Belajar</label>
+                        <textarea id="kebutuhan-belajar" class="form-textarea" rows="3">Terdapat 2 peserta didik dengan gaya belajar auditori, 3 peserta didik kinestetik yang perlu aktivitas fisik/praktik, dan sebagian besar visual. Ada 1 peserta didik yang memerlukan pendampingan ekstra karena kesulitan fokus.</textarea>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="aspek-lainnya" class="form-label">e. Aspek Lainnya</label>
+                        <input type="text" id="aspek-lainnya" class="form-input" placeholder="Contoh: Kondisi kelas kondusif, perlu ice breaking di tengah pembelajaran.">
+                    </div>
+                </div>
+            </section>
+         
+               
+            <section class="form-section" id="section-2">
+                 <h2 class="text-xl font-bold mb-4 border-b pb-2" style="border-color: var(--primary-color);">2. Capaian Pembelajaran / Materi</h2>
+                 <label for="cp-materi" class="form-label">Masukkan kalimat Capaian Pembelajaran atau beberapa materi pokok dipisahkan koma (,)</label>
+                 <textarea id="cp-materi" class="form-textarea" rows="4" placeholder="Contoh: Mengenali berbagai model jaringan komputer, dan melakukan pengiriman data antarperangkat."></textarea>
+                 
+                 <div id="validation-error" class="text-red-500 text-center mb-4 hidden">
+                    Harap isi semua kolom pada Identitas Modul dan Materi Pokok sebelum melanjutkan.
+                </div>
+
+                 <button id="generate-tp-btn" class="btn btn-primary mt-4">Lanjutkan ke Tujuan Pembelajaran</button>
+            </section>
+
+            <div id="output-container" class="space-y-6 hidden">
+                <section class="output-section" id="section-3">
+                    <h2 class="text-xl font-bold mb-4 border-b pb-2" style="border-color: var(--primary-color);">3. Tujuan Pembelajaran (TP)</h2>
+                    <div id="tp-output"></div>
+                    <button id="generate-atp-btn" class="btn btn-primary mt-4">Buat Alur Tujuan Pembelajaran</button>
+                </section>
+                
+                <section class="output-section hidden" id="section-4">
+                    <h2 class="text-xl font-bold mb-4 border-b pb-2" style="border-color: var(--primary-color);">4. Alur Tujuan Pembelajaran (ATP)</h2>
+                    <div id="atp-output"></div>
+                    <button id="generate-kktp-btn" class="btn btn-primary mt-4">Buat KKTP</button>
+                </section>
+                
+                <section class="output-section hidden" id="section-5">
+                    <h2 class="text-xl font-bold mb-4 border-b pb-2" style="border-color: var(--primary-color);">5. Kriteria Ketercapaian Tujuan Pembelajaran (KKTP)</h2>
+                    <div id="kktp-output"></div>
+                    <button id="generate-rpp-btn" class="btn btn-primary mt-4">Buat RPP Lengkap</button>
+                </section>
+            </div>
+
+            <div id="rpp-output-container" class="output-section hidden">
+                </div>
+        </main>
+    </div>
+
+    <div id="help-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <h2 class="text-2xl font-bold mb-4">Bantuan Penggunaan Aplikasi</h2>
+            <div class="space-y-4 text-gray-700">
+                <p>Selamat datang di RPP GENERATOR. Ikuti langkah-langkah berikut untuk membuat RPP secara otomatis:</p>
+                <ol class="list-decimal list-inside space-y-2">
+                    <li><strong>Login:</strong> Masukkan username dan password yang telah ditentukan untuk masuk ke aplikasi.</li>
+                    <li><strong>Isi Identitas Modul & Siswa:</strong> Lengkapi semua data pada formulir pertama, seperti nama sekolah, jenjang, hingga data identifikasi awal siswa.</li>
+                    <li><strong>Masukkan Capaian Pembelajaran:</strong> Tulis kalimat CP atau beberapa materi pokok pada kolom yang tersedia.</li>
+                    <li><strong>Generate TP, ATP, KKTP:</strong> Klik tombol "Lanjutkan" atau "Buat" pada setiap langkah. Aplikasi akan otomatis menghasilkan Tujuan Pembelajaran (TP), Alur Tujuan Pembelajaran (ATP), dan Kriteria Ketercapaian (KKTP) berdasarkan materi yang Anda input.</li>
+                    <li><strong>Generate RPP Lengkap:</strong> Setelah KKTP dibuat, klik tombol "Buat RPP Lengkap" untuk menghasilkan dokumen RPP final, lengkap dengan lampiran soal yang dibuat oleh AI.</li>
+                    <li><strong>Cetak atau Simpan:</strong> Gunakan tombol "Cetak Semua RPP" untuk mencetak dokumen atau menyimpannya sebagai file PDF melalui dialog cetak browser Anda.</li>
+                </ol>
+                <p>Jika ada kendala, silakan hubungi kontak yang tertera di bagian atas aplikasi.</p>
+            </div>
+            <div class="text-right mt-6">
+                <button id="close-help-btn" class="btn btn-primary">Tutup</button>
+          </div>
+        </div>
+    </div>
+    
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    
+    const rppData = {
+        namaSekolah: '', jenjang: '', mapel: '', kelasSemester: '', fase: '',
+        alokasiWaktu: '', namaGuru: '', namaKepsek: '',
+        pengetahuanAwal: '', minatSiswa: '', latarBelakang: '', kebutuhanBelajar: '', aspekLainnya: '',
+        cp_full_text: '', materiPokok: [], tujuanPembelajaran: [],
+    };
+
+    const loginScreen = document.getElementById('login-screen');
+    const mainApp = document.getElementById('main-app');
+    const loginBtn = document.getElementById('login-btn');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const loginError = document.getElementById('login-error');
+    const logoutBtn = document.getElementById('logout-btn');
+    const helpBtn = document.getElementById('help-btn');
+    const helpModal = document.getElementById('help-modal');
+    const closeHelpBtn = document.getElementById('close-help-btn');
+    const jenjangSelect = document.getElementById('jenjang-sekolah');
+    const kelasSelect = document.getElementById('kelas-semester');
+    const faseSelect = document.getElementById('fase');
+    const cpMateriInput = document.getElementById('cp-materi');
+    const generateTpBtn = document.getElementById('generate-tp-btn');
+    const outputContainer = document.getElementById('output-container');
+    const validationError = document.getElementById('validation-error');
+    const section3 = document.getElementById('section-3');
+    const tpOutput = document.getElementById('tp-output');
+    const generateAtpBtn = document.getElementById('generate-atp-btn');
+    const section4 = document.getElementById('section-4');
+    const atpOutput = document.getElementById('atp-output');
+    const generateKktpBtn = document.getElementById('generate-kktp-btn');
+    const section5 = document.getElementById('section-5');
+    const kktpOutput = document.getElementById('kktp-output');
+    const generateRppBtn = document.getElementById('generate-rpp-btn');
+    const rppOutputContainer = document.getElementById('rpp-output-container');
+    
+    loginBtn.addEventListener('click', () => {
+        if (usernameInput.value.trim() === 'alvidanida' && passwordInput.value.trim() === '08236667777') {
+            loginScreen.style.display = 'none';
+            mainApp.style.display = 'block';
+        } else {
+            loginError.classList.remove('hidden');
+        }
+    });
+    logoutBtn.addEventListener('click', () => window.location.reload());
+    helpBtn.addEventListener('click', () => helpModal.style.display = 'flex');
+    closeHelpBtn.addEventListener('click', () => helpModal.style.display = 'none');
+    jenjangSelect.addEventListener('change', updateKelasFaseOptions);
+    generateTpBtn.addEventListener('click', handleGenerateTP);
+    generateAtpBtn.addEventListener('click', handleGenerateATP);
+    generateKktpBtn.addEventListener('click', handleGenerateKKTP);
+    generateRppBtn.addEventListener('click', handleGenerateRPP);
+    
+    if (rppOutputContainer) {
+        rppOutputContainer.addEventListener('click', function(event) {
+            if (event.target.id === 'print-btn' || event.target.closest('#print-btn')) {
+                handlePrint();
+            }
+        });
+    }
+
+    function updateKelasFaseOptions() {
+        const jenjang = jenjangSelect.value;
+        const kelasOptions = { 'SD': ['I / Ganjil', 'I / Genap', 'II / Ganjil', 'II / Genap', 'III / Ganjil', 'III / Genap', 'IV / Ganjil', 'IV / Genap', 'V / Ganjil', 'V / Genap', 'VI / Ganjil', 'VI / Genap'], 'SMP': ['VII / Ganjil', 'VII / Genap', 'VIII / Ganjil', 'VIII / Genap', 'IX / Ganjil', 'IX / Genap'], 'SMA': ['X / Ganjil', 'X / Genap', 'XI / Ganjil', 'XI / Genap', 'XII / Ganjil', 'XII / Genap'] };
+        const faseOptions = { 'SD': ['A', 'B', 'C'], 'SMP': ['D'], 'SMA': ['E', 'F'] };
+        kelasSelect.innerHTML = '<option value="">Pilih Kelas/Semester</option>';
+        faseSelect.innerHTML = '<option value="">Pilih Fase</option>';
+        if (jenjang) {
+            kelasSelect.disabled = false; faseSelect.disabled = false;
+            kelasOptions[jenjang].forEach(opt => { kelasSelect.innerHTML += `<option value="${opt}">${opt}</option>`; });
+            faseOptions[jenjang].forEach(opt => { faseSelect.innerHTML += `<option value="${opt}">${opt}</option>`; });
+        } else {
+            kelasSelect.disabled = true; faseSelect.disabled = true;
+        }
+    }
+
+    function captureAndValidateData() {
+       Object.assign(rppData, {
+            namaSekolah: document.getElementById('nama-sekolah').value.trim(), jenjang: jenjangSelect.value, mapel: document.getElementById('mata-pelajaran').value.trim(), kelasSemester: document.getElementById('kelas-semester').value, fase: faseSelect.value, alokasiWaktu: document.getElementById('alokasi-waktu').value, namaGuru: document.getElementById('nama-guru').value.trim(), namaKepsek: document.getElementById('nama-kepsek').value.trim(), cp_full_text: cpMateriInput.value.trim(), pengetahuanAwal: document.getElementById('pengetahuan-awal').value.trim(), minatSiswa: document.getElementById('minat-siswa').value.trim(), latarBelakang: document.getElementById('latar-belakang').value.trim(), kebutuhanBelajar: document.getElementById('kebutuhan-belajar').value.trim(), aspekLainnya: document.getElementById('aspek-lainnya').value.trim(),
+        });
+        const requiredFields = ['namaSekolah', 'jenjang', 'mapel', 'kelasSemester', 'fase', 'alokasiWaktu', 'namaGuru', 'namaKepsek', 'cp_full_text'];
+        if (requiredFields.some(field => !rppData[field])) {
+            validationError.classList.remove('hidden'); return false;
+        }
+        validationError.classList.add('hidden'); return true;
+    }
+
+    async function callGeminiAPI(prompt, schema, retries = 3, delayMs = 4000) {
+        // FIX: Reverted to the public Google API endpoint.
+        const apiKey = "AIzaSyAN8dgJbMptmWeG8Ekq6KGvHkl990efKGs";
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+        
+        const payload = { 
+            contents: [{ role: "user", parts: [{ text: prompt }] }], 
+            generationConfig: { 
+                responseMimeType: "application/json", 
+                responseSchema: schema 
+            } 
+        };
+        
+        for (let i = 0; i <= retries; i++) {
+            try {
+                const response = await fetch(apiUrl, { 
+                    method: 'POST', 
+                    headers: { 'Content-Type': 'application/json' }, 
+                    body: JSON.stringify(payload) 
+                });
+
+                if (response.status === 429) {
+                    if (i === retries) {
+                        throw new Error(`Batas permintaan API terlampaui setelah ${retries + 1} percobaan. Harap tunggu beberapa saat sebelum mencoba lagi.`);
+                    }
+                    const waitTime = delayMs * Math.pow(2, i) + Math.random() * 1000;
+                    console.warn(`Rate limit terlampaui. Mencoba lagi dalam ${Math.round(waitTime / 1000)} detik...`);
+                    await new Promise(resolve => setTimeout(resolve, waitTime));
+                    continue;
+                }
+
+                if (!response.ok) { 
+                    const errorBody = await response.text();
+                    let errorMessage = `Request API gagal dengan status ${response.status}`;
+                    try {
+                        const errorJson = JSON.parse(errorBody);
+                        errorMessage += `: ${errorJson.error?.message || errorBody}`;
+                    } catch (e) {
+                        errorMessage += `: ${errorBody}`;
+                    }
+                    throw new Error(errorMessage);
+                }
+
+                const result = await response.json();
+                if (result.candidates && result.candidates.length > 0 && result.candidates[0].content?.parts[0]?.text) { 
+                    const jsonText = result.candidates[0].content.parts[0].text; 
+                    try {
+                        return JSON.parse(jsonText);
+                    } catch (e) {
+                        console.error("Gagal mem-parsing JSON dari API. Respons mentah:", jsonText);
+                        throw new Error(`Gagal mem-parsing JSON dari API. Error: ${e.message}`);
+                    }
+                } else { 
+                    console.error("Full API Response:", result); 
+                    if (result.candidates && result.candidates[0]?.finishReason) { 
+                        throw new Error(`Generasi konten dihentikan. Alasan: ${result.candidates[0].finishReason}. Seringkali ini karena konten yang dihasilkan atau prompt Anda dianggap tidak aman oleh kebijakan Google.`); 
+                    } 
+                    throw new Error("Respons dari API tidak valid atau kosong."); 
+                }
+            } catch (error) {
+                if (i === retries) {
+                    throw error;
+                }
+            }
+        }
+    }
+
+    async function createApersepsiQuestions(topic, jenjang) {
+        const prompt = `Anda adalah seorang guru berpengalaman di Indonesia. Buatlah pertanyaan pemantik (apersepsi) yang kontekstual, singkat, dan menarik untuk memulai pembelajaran tentang materi "${topic}" untuk siswa jenjang ${jenjang}.
+        Berikan satu pertanyaan utama yang paling efektif, dan 2 pertanyaan alternatif (bisa lebih sederhana atau dari sudut pandang berbeda).
+        Jawab dalam format JSON yang valid dengan kunci "pertanyaan_utama" (string) dan "pertanyaan_alternatif" (array of strings).`;
+        const schema = {
+            type: "OBJECT",
+            properties: {
+                "pertanyaan_utama": { "type": "STRING" },
+                "pertanyaan_alternatif": { type: "ARRAY", items: { "type": "STRING" } }
+            },
+            required: ["pertanyaan_utama", "pertanyaan_alternatif"]
+        };
+        try {
+            const result = await callGeminiAPI(prompt, schema);
+            let html = `<div class="mt-2 pl-4 border-l-2 border-gray-300">`;
+            html += `<p class="mb-1"><strong>Pertanyaan Pemantik:</strong> ${result.pertanyaan_utama}</p>`;
+            html += `<p class="mb-1 text-sm text-gray-600"><strong>(Alternatif Pertanyaan):</strong></p>`;
+            html += `<ul class="list-disc list-inside ml-4 text-sm text-gray-600">`;
+            result.pertanyaan_alternatif.forEach(alt => {
+                html += `<li>${alt}</li>`;
+            });
+            html += `</ul></div>`;
+            return html;
+        } catch (error) {
+            console.error("Error generating apersepsi questions:", error);
+            // Fallback question if API fails
+            return `<div class="mt-2 pl-4 border-l-2 border-gray-300"><p><strong>Pertanyaan Pemantik:</strong> Pernahkah kalian melihat atau mendengar tentang ${topic} dalam kehidupan sehari-hari? Di mana?</p></div>`;
+        }
+    }
+
+    async function handleGenerateTP() {
+        if (!captureAndValidateData()) return;
+        tpOutput.innerHTML = `<div class="flex items-center justify-center p-4"><div class="loader mr-4"></div><p>AI sedang menganalisis CP dan membuat Tujuan Pembelajaran...</p></div>`;
+        outputContainer.classList.remove('hidden'); section4.classList.add('hidden'); section5.classList.add('hidden'); rppOutputContainer.classList.add('hidden'); section3.scrollIntoView({ behavior: 'smooth' });
+        const prompt = `Anda adalah seorang ahli kurikulum pendidikan Indonesia. Analisis kalimat Capaian Pembelajaran (CP) berikut: "${rppData.cp_full_text}". Identifikasi setiap materi pokok yang utuh dan berbeda di dalamnya. Untuk setiap materi pokok yang teridentifikasi, buatkan Tujuan Pembelajaran (TP) sesuai level kognitif: Memahami, Mengaplikasi, dan Merefleksi. Berikan jawaban dalam format JSON yang valid (array objek dengan kunci "topic" dan "tps"). Setiap objek TP harus memiliki kunci "level" dan "text".`;
+        const schema = { type: "ARRAY", items: { type: "OBJECT", properties: { "topic": { "type": "STRING" }, "tps": { type: "ARRAY", items: { type: "OBJECT", properties: { "level": { "type": "STRING" }, "text": { "type": "STRING" } }, required: ["level", "text"] } } }, required: ["topic", "tps"] } };
+        try {
+            const aiResult = await callGeminiAPI(prompt, schema); rppData.tujuanPembelajaran = aiResult;
+            let tableHtml = `<p class="mb-2 text-gray-700">Berdasarkan analisis AI, berhasil diidentifikasi <strong>${aiResult.length} materi pokok</strong> dengan rincian Tujuan Pembelajaran sebagai berikut:</p>`;
+            aiResult.forEach(group => { tableHtml += `<h4 class="font-bold text-lg mt-4 mb-2 bg-gray-100 p-2 rounded">Materi Pokok: ${group.topic}</h4><table><thead class="bg-gray-50"><tr><th class="w-1/3">Level Kognitif</th><th>Tujuan Pembelajaran</th></tr></thead><tbody>`; group.tps.forEach(tp => { tableHtml += `<tr><td><strong>${tp.level}</strong></td><td>${tp.text}</td></tr>`; }); tableHtml += `</tbody></table>`; });
+            tpOutput.innerHTML = tableHtml;
+        } catch (error) { console.error("Error generating TPs:", error); tpOutput.innerHTML = `<p class="text-red-500">Gagal membuat Tujuan Pembelajaran. Error: ${error.message}</p>`; }
+    }
+
+    function handleGenerateATP() {
+        let tableHtml = `<p class="mb-2 text-gray-700">Tujuan pembelajaran diurutkan berdasarkan materi pokok untuk membentuk Alur Tujuan Pembelajaran (ATP).</p>`; let counter = 1;
+        rppData.tujuanPembelajaran.forEach(group => { tableHtml += `<h4 class="font-bold text-lg mt-4 mb-2">ATP untuk: ${group.topic}</h4><table><thead class="bg-gray-50"><tr><th class="w-1/12">Urutan</th><th>Tujuan Pembelajaran (diurutkan)</th></tr></thead><tbody>`; group.tps.forEach(tp => { tableHtml += `<tr><td class="text-center">${counter++}</td><td>${tp.text}</td></tr>`; }); tableHtml += `</tbody></table>`; });
+        atpOutput.innerHTML = tableHtml; section4.classList.remove('hidden'); section4.scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    function handleGenerateKKTP() {
+        const allTps = rppData.tujuanPembelajaran.flatMap(group => group.tps);
+        const kktpCriteria = { 'Memahami': "Kemampuan menjelaskan konsep dasar, karakteristik, dan fungsi utama dengan benar.", 'Mengaplikasi': "Kemampuan mengklasifikasikan contoh nyata atau menggambarkan alur proses secara logis dan tepat.", 'Merefleksi': "Kemampuan memberikan evaluasi kritis, membandingkan, dan menyajikan rekomendasi yang beralasan." };
+        let tableHtml = `<table><thead class="bg-gray-50"><tr><th class="w-1/3">Tujuan Pembelajaran</th><th class="w-1/3">Kriteria Ketercapaian</th><th>Interval Nilai & Deskripsi</th></tr></thead><tbody>`;
+        allTps.forEach(tp => { tableHtml += `<tr><td rowspan="3">${tp.text}</td><td rowspan="3">${kktpCriteria[tp.level]}</td><td><strong>80 - 100:</strong> Tercapai</td></tr><tr><td><strong>70 - 79:</strong> Hampir Tercapai</td></tr><tr><td><strong>0 - 69:</strong> Belum Tercapai</td></tr>`; });
+        tableHtml += `</tbody></table>`;
+        const kesimpulanHtml = `<div class="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg"><h4 class="font-bold text-lg text-blue-800">Kesimpulan Kriteria Ketercapaian</h4><p class="mt-2 text-gray-700">Peserta didik dianggap telah mencapai Kriteria Ketercapaian Tujuan Pembelajaran (KKTP) apabila memperoleh <strong>nilai minimal 80</strong> pada asesmen yang diberikan.</p><p class="mt-2 text-gray-700"><strong>Tindak Lanjut:</strong> Bagi peserta didik yang belum mencapai KKTP (nilai di bawah 80), guru akan memberikan program remedial berupa pembelajaran ulang dengan metode yang berbeda, tutor sebaya, atau pemberian tugas tambahan yang terstruktur untuk membantu mereka mencapai kompetensi yang diharapkan.</p></div>`;
+        kktpOutput.innerHTML = tableHtml + kesimpulanHtml; section5.classList.remove('hidden'); section5.scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    function getMetodePembelajaran(model) {
+        switch(model) {
+            case 'Discovery Learning': return 'Observasi, Diskusi Kelompok, Tanya Jawab, Presentasi, Studi Pustaka';
+            case 'Inkuiri Learning': return 'Eksperimen, Analisis Data, Diskusi, Presentasi, Merumuskan Hipotesis';
+            case 'Problem Based Learning (PBL)': return 'Analisis Masalah, Diskusi Kelompok, Penyelidikan Mandiri, Presentasi Solusi';
+            case 'Project Based Learning (PjBL)': return 'Perancangan Proyek, Kolaborasi, Presentasi Produk, Pameran Karya';
+            default: return 'Diskusi, Tanya Jawab, Presentasi';
+        }
+    }
+    
+    async function createMateriIdentifier(cp, jenjang) {
+        const prompt = `Anda adalah seorang ahli didaktik dan perancang kurikulum. Berdasarkan Capaian Pembelajaran (CP): "${cp}" untuk jenjang ${jenjang}, lakukan identifikasi materi pelajaran. Berikan jawaban ringkas dan jelas untuk setiap poin dalam format JSON.`;
+        const schema = {
+            type: "OBJECT",
+            properties: {
+                "jenis_pengetahuan": { "type": "STRING", "description": "Sebutkan jenis pengetahuan (faktual, konseptual, prosedural, metakognitif) yang dominan." },
+                "relevansi": { "type": "STRING", "description": "Jelaskan relevansi materi dengan kehidupan nyata siswa." },
+                "kesulitan": { "type": "STRING", "description": "Analisis tingkat kesulitan materi bagi siswa pada jenjang tersebut." },
+                "struktur_materi": { "type": "STRING", "description": "Jelaskan bagaimana struktur atau urutan penyampaian materi yang logis." },
+                "integrasi_nilai": { "type": "STRING", "description": "Sebutkan nilai-nilai karakter (Profil Pelajar Pancasila) yang dapat diintegrasikan." }
+            },
+            required: ["jenis_pengetahuan", "relevansi", "kesulitan", "struktur_materi", "integrasi_nilai"]
+        };
+
+        try {
+            const result = await callGeminiAPI(prompt, schema);
+            return `<div class="mb-4 p-4 border rounded-md bg-gray-50" style="page-break-inside: avoid;">
+                        <h3 class="font-bold text-xl mb-2 text-center">Identifikasi Materi Pelajaran</h3>
+                        <ol type="a" class="list-decimal list-inside space-y-2">
+                            <li><strong>Jenis pengetahuan yang akan dicapai:</strong> ${result.jenis_pengetahuan}</li>
+                            <li><strong>Relevansi dengan kehidupan nyata peserta didik:</strong> ${result.relevansi}</li>
+                            <li><strong>Tingkat kesulitan:</strong> ${result.kesulitan}</li>
+                            <li><strong>Struktur materi:</strong> ${result.struktur_materi}</li>
+                            <li><strong>Integrasi nilai dan karakter:</strong> ${result.integrasi_nilai}</li>
+                        </ol>
+                    </div>`;
+        } catch (error) {
+            console.error("Error generating Materi Identifier:", error);
+            return '';
+        }
+    }
+
+    async function handleGenerateRPP() {
+        rppOutputContainer.innerHTML = `<div class="flex items-center justify-center p-8"><div class="loader mr-4"></div><p>Sedang membuat RPP Lengkap... Ini mungkin memakan waktu beberapa saat.</p></div>`;
+        rppOutputContainer.classList.remove('hidden');
+        rppOutputContainer.scrollIntoView({ behavior: 'smooth' });
+
+        const { namaGuru, kelasSemester, fase, alokasiWaktu, mapel, pengetahuanAwal, minatSiswa, latarBelakang, kebutuhanBelajar, aspekLainnya, jenjang, cp_full_text, tujuanPembelajaran } = rppData;
+
+        const identifikasiAwalHtml = `<div class="mb-4 p-4 border rounded-md bg-gray-50" style="page-break-after: always;">
+            <h3 class="font-bold text-xl mb-2 text-center">Identifikasi Awal Peserta Didik</h3>
+            <ul class="list-disc list-inside ml-4 space-y-1">
+                <li><strong>Pengetahuan Awal Peserta Didik:</strong> ${pengetahuanAwal}</li>
+                <li><strong>Minat Peserta Didik:</strong> ${minatSiswa}</li>
+                <li><strong>Latar Belakang Peserta Didik:</strong> ${latarBelakang}</li>
+                <li><strong>Kebutuhan Belajar:</strong> ${kebutuhanBelajar}</li>
+                <li><strong>Aspek Lainnya:</strong> ${aspekLainnya || 'Tidak ada catatan.'}</li>
+            </ul>
+        </div>`;
+
+        const materiIdentifierHtml = await createMateriIdentifier(cp_full_text, jenjang);
+		
+		let tujuanHtml = `<div class="mb-4 p-4 border rounded-md bg-blue-50">
+            <h3 class="font-bold text-lg mb-2">Capaian Pembelajaran</h3>
+            <p>${cp_full_text}</p>
+            <h3 class="font-bold text-lg mt-4 mb-2">Tujuan Pembelajaran</h3>`;
+        tujuanPembelajaran.forEach(group => {
+            tujuanHtml += `<h4 class="font-semibold mt-2">Materi: ${group.topic}</h4><ul class="list-disc list-inside ml-6">`;
+            group.tps.forEach(tp => {
+                tujuanHtml += `<li>(${tp.level}) ${tp.text}</li>`;
+            });
+            tujuanHtml += `</ul>`;
+        });
+        tujuanHtml += `</div>`;
+
+        let finalHtml = `<div class="flex justify-between items-center mb-4">
+            <h2 class="text-2xl font-bold text-gray-800">Hasil RPP Lengkap</h2>
+            <button id="print-btn" class="btn btn-success">
+                <i class="fas fa-print mr-2"></i> Cetak Semua RPP
+            </button>
+        </div>
+        <div id="rpp-content-to-print">${identifikasiAwalHtml}${tujuanHtml}${materiIdentifierHtml}`;
+		      
+        let rppCounter = 0; 
+        let isPjblUsed = false;
+
+        for (const group of rppData.tujuanPembelajaran) {
+            for (const tp of group.tps) {
+                rppCounter++;
+                let modelPembelajaran = ''; const tujuanText = tp.text.toLowerCase();
+                if (tp.level === 'Memahami') { modelPembelajaran = 'Discovery Learning';
+                } else if (tp.level === 'Mengaplikasi') { modelPembelajaran = 'Inkuiri Learning';
+                } else if (tp.level === 'Merefleksi') {
+                    if (tujuanText.includes('merancang') || tujuanText.includes('membuat') || tujuanText.includes('menghasilkan') || tujuanText.includes('mengembangkan')) {
+                        modelPembelajaran = 'Project Based Learning (PjBL)'; isPjblUsed = true;
+                    } else { modelPembelajaran = 'Problem Based Learning (PBL)'; }
+                } else { modelPembelajaran = 'Problem Based Learning (PBL)'; }
+                
+                const metodePembelajaran = getMetodePembelajaran(modelPembelajaran);
+
+                const createIdentitas = () => `
+                    <h4 class="font-bold text-lg mt-8 mb-2">A. IDENTITAS MODUL</h4>
+                    <table class="!my-2"><tbody>
+                        <tr><td class="!font-semibold !w-1/3">Nama Penyusun</td><td>: ${namaGuru}</td></tr>
+                        <tr><td class="!font-semibold">Kelas/Fase</td><td>: ${kelasSemester} / Fase ${fase}</td></tr>
+                        <tr><td class="!font-semibold">Mata Pelajaran</td><td>: ${mapel}</td></tr>
+                        <tr><td class="!font-semibold">Materi Pokok</td><td>: ${group.topic}</td></tr>
+                        <tr><td class="!font-semibold">Alokasi Waktu</td><td>: ${alokasiWaktu}</td></tr>
+                        <tr><td class="!font-semibold">Jumlah Pertemuan</td><td>: 1 Kali Pertemuan</td></tr>
+                        <tr><td class="!font-semibold">Model Pembelajaran</td><td>: ${modelPembelajaran}</td></tr>
+                        <tr><td class="!font-semibold">Pendekatan</td><td>: Pembelajaran Mendalam</td></tr>
+                        <tr><td class="!font-semibold">Metode</td><td>: ${metodePembelajaran}</td></tr>
+                    </tbody></table>`;
+                
+                const createLangkahPembelajaran = async (model, topic, alokasiWaktu, jenjang) => {
+                    const jpMatch = alokasiWaktu.match(/(\d+)\s*JP\s*x\s*(\d+)\s*Menit/i); let totalMenit = 90;
+                    if (jpMatch) { totalMenit = parseInt(jpMatch[1], 10) * parseInt(jpMatch[2], 10); }
+                    const waktuPendahuluan = Math.max(10, Math.round(totalMenit * 0.15 / 5) * 5); 
+                    const waktuPenutup = Math.max(15, Math.round(totalMenit * 0.20 / 5) * 5); 
+                    const waktuInti = totalMenit - waktuPendahuluan - waktuPenutup;
+
+                    const waktuPembukaan = Math.round(waktuPendahuluan * 0.20);
+                    const waktuMotivasi = Math.round(waktuPendahuluan * 0.15);
+                    const waktuPenyampaian = Math.round(waktuPendahuluan * 0.25);
+                    const waktuApersepsi = waktuPendahuluan - waktuPembukaan - waktuMotivasi - waktuPenyampaian;
+                    
+                    const apersepsiHtml = await createApersepsiQuestions(topic, jenjang);
+
+                    let kegiatanIntiHtml = '';
+                    switch(model) {
+                        case 'Discovery Learning': kegiatanIntiHtml = `<li><strong>Stimulation (${Math.round(waktuInti * 0.15)} Menit):</strong> Guru menyajikan stimulus menarik (gambar/video) terkait ${topic}. <em>(Prinsip: Menggembirakan)</em></li><li><strong>Problem Statement (${Math.round(waktuInti * 0.20)} Menit):</strong> Siswa merumuskan pertanyaan kunci. <em>(Prinsip: Bermakna, Pengalaman: Memahami)</em></li><li><strong>Data Collection (${Math.round(waktuInti * 0.25)} Menit):</strong> Siswa mengumpulkan informasi relevan. <em>(Pengalaman: Memahami)</em></li><li><strong>Data Processing (${Math.round(waktuInti * 0.20)} Menit):</strong> Siswa mengolah informasi dalam kelompok. <em>(Pengalaman: Mengaplikasi)</em></li><li><strong>Verification (${Math.round(waktuInti * 0.10)} Menit):</strong> Siswa mempresentasikan temuan untuk diverifikasi. <em>(Prinsip: Berkesadaran)</em></li><li><strong>Generalization (${Math.round(waktuInti * 0.10)} Menit):</strong> Siswa menarik kesimpulan umum. <em>(Pengalaman: Merefleksi)</em></li>`; break;
+                        case 'Inkuiri Learning': kegiatanIntiHtml = `<li><strong>Orientasi Masalah (${Math.round(waktuInti * 0.15)} Menit):</strong> Guru menyajikan fenomena relevan dengan ${topic}. <em>(Prinsip: Bermakna)</em></li><li><strong>Merumuskan Masalah & Hipotesis (${Math.round(waktuInti * 0.20)} Menit):</strong> Siswa merumuskan pertanyaan dan dugaan awal. <em>(Pengalaman: Mengaplikasi)</em></li><li><strong>Mengumpulkan Data (${Math.round(waktuInti * 0.30)} Menit):</strong> Siswa melakukan investigasi untuk menguji hipotesis. <em>(Prinsip: Menggembirakan, Pengalaman: Mengaplikasi)</em></li><li><strong>Menganalisis Data (${Math.round(waktuInti * 0.20)} Menit):</strong> Siswa menganalisis data dan menghubungkannya dengan hipotesis. <em>(Pengalaman: Mengaplikasi)</em></li><li><strong>Menyajikan Hasil & Kesimpulan (${Math.round(waktuInti * 0.15)} Menit):</strong> Kelompok menyajikan hasil penyelidikan. <em>(Prinsip: Berkesadaran, Pengalaman: Merefleksi)</em></li>`; break;
+                        case 'Problem Based Learning (PBL)': kegiatanIntiHtml = `<li><strong>Orientasi pada Masalah (${Math.round(waktuInti * 0.15)} Menit):</strong> Guru menyajikan masalah dunia nyata yang kompleks terkait ${topic}. <em>(Prinsip: Bermakna)</em></li><li><strong>Mengorganisasikan Siswa (${Math.round(waktuInti * 0.20)} Menit):</strong> Siswa mendefinisikan dan merencanakan langkah penyelesaian. <em>(Pengalaman: Mengaplikasi)</em></li><li><strong>Membimbing Penyelidikan (${Math.round(waktuInti * 0.30)} Menit):</strong> Siswa mencari data untuk solusi. <em>(Pengalaman: Mengaplikasi)</em></li><li><strong>Mengembangkan & Menyajikan Solusi (${Math.round(waktuInti * 0.20)} Menit):</strong> Siswa menyusun solusi dan mempresentasikannya. <em>(Prinsip: Menggembirakan, Pengalaman: Merefleksi)</em></li><li><strong>Menganalisis & Mengevaluasi Proses (${Math.round(waktuInti * 0.15)} Menit):</strong> Refleksi bersama terhadap efektivitas solusi dan proses. <em>(Prinsip: Berkesadaran, Pengalaman: Merefleksi)</em></li>`; break;
+                        case 'Project Based Learning (PjBL)': kegiatanIntiHtml = `<li><strong>Pertanyaan Mendasar (${Math.round(waktuInti * 0.15)} Menit):</strong> Guru mengajukan pertanyaan pemicu untuk membuat proyek terkait ${topic}. <em>(Prinsip: Bermakna)</em></li><li><strong>Mendesain Perencanaan Proyek (${Math.round(waktuInti * 0.20)} Menit):</strong> Siswa merancang langkah-langkah dan kebutuhan proyek. <em>(Prinsip: Menggembirakan, Pengalaman: Mengaplikasi)</em></li><li><strong>Menyusun Jadwal (${Math.round(waktuInti * 0.10)} Menit):</strong> Siswa dan guru menyepakati timeline proyek. <em>(Pengalaman: Mengaplikasi)</em></li><li><strong>Memonitor Kemajuan Proyek (${Math.round(waktuInti * 0.30)} Menit):</strong> Siswa mengerjakan proyek dengan bimbingan guru. <em>(Pengalaman: Mengaplikasi)</em></li><li><strong>Menguji Hasil (${Math.round(waktuInti * 0.15)} Menit):</strong> Siswa mempresentasikan produk akhir. <em>(Pengalaman: Merefleksi)</em></li><li><strong>Evaluasi Pengalaman (${Math.round(waktuInti * 0.10)} Menit):</strong> Refleksi proses pengerjaan proyek. <em>(Prinsip: Berkesadaran, Pengalaman: Merefleksi)</em></li>`; break;
+                    }
+                    return `<h4 class="font-bold text-lg mt-4 mb-2">E. LANGKAH-LANGKAH PEMBELAJARAN</h4>
+                    <div class="langkah-pendahuluan">
+                        <p class="font-semibold">Kegiatan Pendahuluan (${waktuPendahuluan} Menit)</p>
+                        <ol class="list-decimal list-inside ml-4 space-y-2">
+                            <li><strong>Pembukaan (${waktuPembukaan} Menit):</strong> Guru memulai pembelajaran dengan salam, berdo'a, menyapa dan menanyakan kabar peserta didik, memeriksa kehadiran, serta mengecek situasi dan kesiapan kelas.</li>
+                            <li><strong>Motivasi (${waktuMotivasi} Menit):</strong> Guru memberikan ice breaking ringan atau motivasi singkat untuk membangkitkan semangat belajar dan fokus siswa.</li>
+                            <li><strong>Apersepsi (${waktuApersepsi} Menit):</strong> Guru melakukan apersepsi dengan memberikan pertanyaan pemantik yang kontekstual untuk menghubungkan pengalaman siswa dengan materi '${topic}'. ${apersepsiHtml} <em>(Prinsip: Berkesadaran, Bermakna)</em></li>
+                            <li><strong>Penyampaian Rencana Pembelajaran (${waktuPenyampaian} Menit):</strong> Guru menyampaikan tujuan pembelajaran, manfaat pembelajaran, serta menjelaskan skenario kegiatan dan asesmen yang akan dilakukan. <em>(Prinsip: Menggembirakan)</em></li>
+                        </ol>
+                    </div>
+                    <div class="langkah-inti"><p class="font-semibold">Kegiatan Inti (${waktuInti} Menit)</p><ol class="list-decimal list-inside ml-4 space-y-2">${kegiatanIntiHtml}</ol></div>
+                    <div class="langkah-penutup"><p class="font-semibold">Kegiatan Penutup (${waktuPenutup} Menit)</p><ul class="list-disc list-inside ml-4">
+                    <li><strong>Refleksi & Kesimpulan (${Math.round(waktuPenutup * 0.4)} Menit):</strong> Guru bersama siswa menyimpulkan poin-poin kunci pembelajaran. Guru memandu refleksi dengan pertanyaan seperti: 'Apa hal paling menarik yang kamu pelajari hari ini?' dan 'Bagian mana yang masih sulit kamu pahami?'. <em>(Prinsip: Berkesadaran)</em></li>
+                    <li><strong>Asesmen Formatif (${Math.round(waktuPenutup * 0.4)} Menit):</strong> Guru memberikan asesmen singkat (misal: exit ticket dengan 1-2 pertanyaan kunci, kuis lisan cepat) untuk mengukur ketercapaian tujuan pembelajaran secara formatif. <em>(Pengalaman: Merefleksi)</em></li>
+                    <li><strong>Tindak Lanjut & Penutup (${Math.round(waktuPenutup * 0.2)} Menit):</strong> Guru memberikan umpan balik konstruktif berdasarkan hasil refleksi dan asesmen, menyampaikan informasi tentang materi pertemuan berikutnya, dan menutup pelajaran dengan doa dan salam.</li>
+                    </ul></div>`;
+                };
+
+                const createDPL = async (topic, tujuan) => { const prompt = `Anda adalah ahli kurikulum. Berdasarkan Materi: "${topic}" dan Tujuan: "${tujuan}", pilih 2-4 Dimensi Profil Lulusan (DPL) paling relevan dari daftar: Keimanan & Ketakwaan, Kewargaan, Penalaran Kritis, Kreativitas, Kolaborasi, Kemandirian, Kesehatan, Komunikasi. Berikan justifikasi singkat untuk tiap pilihan. Jawab dalam format JSON (array objek dg kunci "dimensi" & "justifikasi").`; const schema = { type: "ARRAY", items: { type: "OBJECT", properties: { "dimensi": { "type": "STRING" }, "justifikasi": { "type": "STRING" } }, required: ["dimensi", "justifikasi"] } }; try { const aicontent = await callGeminiAPI(prompt, schema); let tableHtml = `<h4 class="font-bold text-lg mt-4 mb-2">B. Dimensi Profil Lulusan (DPL)</h4><table class="!my-2"><thead class="bg-gray-50"><tr><th class="!w-1/3">Dimensi</th><th>Justifikasi</th></tr></thead><tbody>`; aicontent.forEach(item => { tableHtml += `<tr><td><strong>${item.dimensi}</strong></td><td>${item.justifikasi}</td></tr>`; }); tableHtml += `</tbody></table>`; return { html: tableHtml, data: aicontent }; } catch (error) { console.error("Error generating DPL:", error); return { html: `<h4 class="font-bold text-lg mt-4 mb-2">B. Dimensi Profil Lulusan (DPL)</h4><p class="text-red-500">Gagal memuat DPL. Error: ${error.message}</p>`, data: [] }; } };
+                
+                const createSikapRubric = async (dplData) => {
+                    if (!dplData || dplData.length === 0) return '';
+
+                    const dimensiNames = dplData.map(d => d.dimensi).join(', ');
+                    const prompt = `Anda adalah ahli evaluasi Kurikulum Merdeka. Berdasarkan dimensi sikap berikut: **${dimensiNames}**, buatlah rubrik penilaian sikap (observasi) sederhana untuk satu pertemuan.
+                    Tugas:
+                    1.  Untuk setiap dimensi, tentukan 2 indikator perilaku kunci yang paling mudah diamati guru di kelas.
+                    2.  Sajikan hasilnya dalam format JSON yang ketat.
+                    Contoh jika dimensinya 'Kolaborasi': indikatornya bisa 'Aktif berdiskusi dalam kelompok' dan 'Menghargai pendapat teman'.
+                    Skema JSON:
+                    { "dimensi_sikap": [ { "dimensi": "string", "indikator": [ { "kode": "A1", "deskripsi": "string" }, { "kode": "A2", "deskripsi": "string" } ] } ] }`;
+                    const schema = {
+                        type: "OBJECT",
+                        properties: {
+                            "dimensi_sikap": {
+                                type: "ARRAY",
+                                items: {
+                                    type: "OBJECT",
+                                    properties: { "dimensi": { "type": "STRING" }, "indikator": { type: "ARRAY", items: { type: "OBJECT", properties: { "kode": { "type": "STRING" }, "deskripsi": { "type": "STRING" } }, required: ["kode", "deskripsi"] } } },
+                                    required: ["dimensi", "indikator"]
+                                }
+                            }
+                        },
+                        required: ["dimensi_sikap"]
+                    };
+
+                    try {
+                        const aiResult = await callGeminiAPI(prompt, schema);
+                        let indikatorHeaders = ''; let indikatorColumns = ''; let indikatorList = ''; let totalIndikator = 0;
+                        aiResult.dimensi_sikap.forEach(dimensi => {
+                            indikatorList += `<h5 class="font-semibold mt-3 text-sm">${dimensi.dimensi}</h5><ul class="list-none pl-2 text-sm space-y-1">`;
+                            dimensi.indikator.forEach(ind => {
+                                totalIndikator++;
+                                indikatorHeaders += `<th class="!text-center !text-xs !p-1" style="writing-mode: vertical-rl; transform: rotate(180deg);">${ind.kode}</th>`;
+                                indikatorColumns += `<td class="!p-0"></td>`;
+                                indikatorList += `<li><strong>${ind.kode}:</strong> ${ind.deskripsi}</li>`;
+                            });
+                            indikatorList += `</ul>`;
+                        });
+                        
+                        let tableBody = '';
+                        for (let i = 1; i <= 35; i++) { tableBody += `<tr><td class="!py-1 !px-2 !text-center">${i}.</td><td class="!py-1 !px-2"></td>${indikatorColumns}</tr>`; }
+
+                        return `<div class="sikap-rubric-page" style="page-break-after: always;">
+                            <h3 class="font-bold text-center text-lg uppercase">LAMPIRAN: RUBRIK PENILAIAN SIKAP (LEMBAR OBSERVASI)</h3>
+                            <div class="grid grid-cols-2 gap-x-6 mt-4">
+                                <div><h4 class="font-bold text-md">Indikator Sikap yang Diobservasi:</h4>${indikatorList}</div>
+                                <div><h4 class="font-bold text-md">Keterangan Penilaian:</h4><p class="text-sm">Isilah kolom dengan skor yang sesuai:</p><ul class="list-none pl-2 text-sm"><li><strong>4:</strong> Selalu menunjukkan perilaku secara konsisten.</li><li><strong>3:</strong> Sering menunjukkan perilaku.</li><li><strong>2:</strong> Mulai menunjukkan perilaku (kadang-kadang).</li><li><strong>1:</strong> Belum menunjukkan perilaku.</li></ul></div>
+                            </div>
+                            <table class="!mt-4 !text-sm"><thead><tr><th rowspan="2" class="!w-[4%] !text-center !align-middle">No</th><th rowspan="2" class="!w-[50%] !text-center !align-middle">Nama Peserta Didik</th><th colspan="${totalIndikator}" class="!text-center">Indikator Sikap (Skor 1-4)</th></tr><tr>${indikatorHeaders}</tr></thead><tbody>${tableBody}</tbody></table>
+                        </div>`;
+                    } catch (error) { console.error("Error generating attitude rubric:", error); return ''; }
+                };
+
+                const createDesainPembelajaran = async (topic, tujuan, modelPembelajaran) => { const prompt = `Anda ahli desain instruksional. Berdasarkan Materi: "${topic}", Tujuan: "${tujuan}", dan Model: "${modelPembelajaran}", buat deskripsi singkat untuk tiap komponen "Desain Pembelajaran" (Lintas Disiplin Ilmu, Praktik Pedagogis, Kemitraan, Lingkungan, Pemanfaatan Digital). Jawab dalam format JSON dg kunci: "lintas_disiplin", "praktik_pedagogis", "kemitraan", "lingkungan", "pemanfaatan_digital".`; const schema = { type: "OBJECT", properties: { "lintas_disiplin": { "type": "STRING" }, "praktik_pedagogis": { "type": "STRING" }, "kemitraan": { "type": "STRING" }, "lingkungan": { "type": "STRING" }, "pemanfaatan_digital": { "type": "STRING" } }, required: ["lintas_disiplin", "praktik_pedagogis", "kemitraan", "lingkungan", "pemanfaatan_digital"] }; try { const aicontent = await callGeminiAPI(prompt, schema); return `<h4 class="font-bold text-lg mt-4 mb-2">D. DESAIN PEMBELAJARAN</h4><div class="space-y-2"><p><strong>a. Lintas Disiplin Ilmu:</strong> ${aicontent.lintas_disiplin}</p><p><strong>b. Praktik Pedagogis:</strong> ${aicontent.praktik_pedagogis}</p><p><strong>c. Kemitraan Pembelajaran:</strong> ${aicontent.kemitraan}</p><p><strong>d. Lingkungan Pembelajaran:</strong> ${aicontent.lingkungan}</p><p><strong>e. Pemanfaatan Digital:</strong> ${aicontent.pemanfaatan_digital}</p></div>`; } catch (error) { console.error("Error generating Desain Pembelajaran:", error); return `<h4 class="font-bold text-lg mt-4 mb-2">D. DESAIN PEMBELAJARAN</h4><p class="text-red-500">Gagal memuat Desain Pembelajaran. Error: ${error.message}</p>`; } };
+                
+                const createLKPD = async (model, topic, tujuan, jenjang) => {
+                    const { kelasSemester, fase, mapel, namaGuru } = rppData;
+                    const prompt = `Anda adalah seorang ahli desain instruksional. Buatlah Lembar Kerja Peserta Didik (LKPD) yang lengkap dan dinamis untuk siswa jenjang ${jenjang}.
+                    Informasi Pembelajaran:
+                    - Materi Pokok: "${topic}"
+                    - Tujuan Pembelajaran: "${tujuan}"
+                    - Model Pembelajaran yang Digunakan: "${model}"
+
+                    Tugas Anda:
+                    1.  Buat Judul LKPD yang menarik dan sesuai dengan aktivitas.
+                    2.  Tuliskan Tujuan Kegiatan LKPD secara singkat (1-2 kalimat).
+                    3.  Rancang 3-5 Langkah Kerja/Tugas yang harus dilakukan siswa secara berkelompok. Tugas-tugas ini HARUS MENCERMINKAN SINTAKS dari model pembelajaran "${model}", merangsang pemikiran kritis, dan mendorong kolaborasi. Contoh: Jika modelnya PBL, langkah pertama harus orientasi masalah. Jika PjBL, langkahnya adalah merancang proyek.
+                    4.  Buat Rubrik Penilaian untuk LKPD tersebut dalam bentuk tabel. Rubrik harus mencakup minimal 3 kriteria relevan (misalnya: Pemahaman Konsep, Keterampilan Kolaborasi, Kemampuan Analisis/Pemecahan Masalah, Kualitas Presentasi/Produk) dengan deskripsi untuk 4 level (Sangat Baik, Baik, Cukup, Perlu Bimbingan).
+
+                    Berikan output dalam format JSON yang ketat dengan skema berikut:
+                    {
+                      "judul_lkpd": "string",
+                      "tujuan_lkpd": "string",
+                      "langkah_kerja": [
+                        { "tugas": "string", "deskripsi_kegiatan": "string" }
+                      ],
+                      "rubrik": {
+                        "kriteria": [
+                          { "aspek": "string", "sangat_baik": "string", "baik": "string", "cukup": "string", "perlu_bimbingan": "string" }
+                        ]
+                      }
+                    }`;
+                    const schema = {
+                        type: "OBJECT",
+                        properties: {
+                            "judul_lkpd": { "type": "STRING" },
+                            "tujuan_lkpd": { "type": "STRING" },
+                            "langkah_kerja": {
+                                type: "ARRAY",
+                                items: {
+                                    type: "OBJECT",
+                                    properties: { "tugas": { "type": "STRING" }, "deskripsi_kegiatan": { "type": "STRING" } },
+                                    required: ["tugas", "deskripsi_kegiatan"]
+                                }
+                            },
+                            "rubrik": {
+                                type: "OBJECT",
+                                properties: { "kriteria": { type: "ARRAY", items: { type: "OBJECT", properties: { "aspek": { "type": "STRING" }, "sangat_baik": { "type": "STRING" }, "baik": { "type": "STRING" }, "cukup": { "type": "STRING" }, "perlu_bimbingan": { "type": "STRING" } }, required: ["aspek", "sangat_baik", "baik", "cukup", "perlu_bimbingan"] } } },
+                                required: ["kriteria"]
+                            }
+                        },
+                        required: ["judul_lkpd", "tujuan_lkpd", "langkah_kerja", "rubrik"]
+                    };
+
+                    try {
+                        const aiResult = await callGeminiAPI(prompt, schema);
+
+                        let lkpdHtml = `<div class="lkpd-page mt-8 p-4 border-2 border-dashed border-gray-400 rounded-lg" style="page-break-after: always;">
+                            <h4 class="font-bold text-center text-lg uppercase">LEMBAR KERJA PESERTA DIDIK (LKPD)</h4>
+                            <h5 class="font-bold text-center text-md uppercase mb-4">${aiResult.judul_lkpd}</h5>
+                            <table class="!my-2 !border-none !text-sm"><tr class="!border-none"><td class="!border-none !p-1 !font-semibold !w-1/4">Mata Pelajaran</td><td class="!border-none !p-1">: ${mapel}</td></tr><tr class="!border-none"><td class="!border-none !p-1 !font-semibold">Materi Pokok</td><td class="!border-none !p-1">: ${topic}</td></tr><tr class="!border-none"><td class="!border-none !p-1 !font-semibold">Kelas/Fase</td><td class="!border-none !p-1">: ${kelasSemester}/${fase}</td></tr></table>
+                            <hr class="my-3 border-gray-400">
+                            <div class="flex justify-between text-sm"><p><strong>Kelompok:</strong> ....................</p><p><strong>Kelas:</strong> ....................</p></div>
+                            <p class="text-sm"><strong>Anggota Kelompok:</strong></p><ol class="list-decimal list-inside text-sm"><li>..................................................</li><li>..................................................</li><li>..................................................</li><li>..................................................</li></ol>
+                            <h5 class="font-bold mt-4">A. Tujuan Kegiatan:</h5>
+                            <p class="text-sm">${aiResult.tujuan_lkpd}</p>
+                            <h5 class="font-bold mt-4">B. Langkah Kerja dan Tugas:</h5>
+                            <ol class="list-decimal list-inside space-y-4 text-sm">`;
+                        aiResult.langkah_kerja.forEach(langkah => {
+                            lkpdHtml += `<li><strong>${langkah.tugas}:</strong><br>${langkah.deskripsi_kegiatan}<div class="h-32 mt-2 border rounded p-2 bg-gray-50 text-gray-500 italic" contenteditable="true">Ruang untuk jawaban dan catatan kelompok...</div></li>`;
+                        });
+                        lkpdHtml += `</ol></div>`;
+
+                        let rubricHtml = `<div class="rubrik-page" style="page-break-before: always;">
+                            <h4 class="font-bold text-center text-lg uppercase">RUBRIK PENILAIAN LKPD</h4>
+                            <h5 class="font-bold text-center text-md uppercase mb-4">${aiResult.judul_lkpd}</h5>
+                            <table class="!mt-4 !text-xs">
+                                <thead class="bg-gray-100">
+                                    <tr>
+                                        <th class="!w-1/5">Kriteria Penilaian</th>
+                                        <th>Sangat Baik (A)</th>
+                                        <th>Baik (B)</th>
+                                        <th>Cukup (C)</th>
+                                        <th>Perlu Bimbingan (D)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>`;
+                        aiResult.rubrik.kriteria.forEach(k => {
+                            rubricHtml += `<tr>
+                                <td class="!font-semibold">${k.aspek}</td>
+                                <td>${k.sangat_baik}</td>
+                                <td>${k.baik}</td>
+                                <td>${k.cukup}</td>
+                                <td>${k.perlu_bimbingan}</td>
+                            </tr>`;
+                        });
+                        rubricHtml += `</tbody></table>
+                            <div class="mt-8 flex justify-between items-start">
+                                <div>
+                                    <h5 class="font-bold">Catatan & Umpan Balik Guru:</h5>
+                                    <div class="h-24 w-96 mt-2 border rounded p-2 bg-gray-50"></div>
+                                </div>
+                                <div class="text-center text-sm">
+                                    <p>Garut, .............................</p>
+                                    <p>Guru Penilai,</p>
+                                    <div class="h-20"></div>
+                                    <p class="font-bold underline">${namaGuru.split('/')[0].trim()}</p>
+                                </div>
+                            </div>
+                        </div>`;
+
+                        return lkpdHtml + rubricHtml;
+
+                    } catch (error) {
+                        console.error("Error generating LKPD:", error);
+                        return `<div class="mt-6 p-4 border-2 border-dashed border-gray-400 rounded-lg"><h4 class="font-bold text-center text-lg uppercase">LEMBAR KERJA PESERTA DIDIK (LKPD)</h4><p class="text-red-500 text-center mt-4">Gagal membuat LKPD dinamis. Silakan gunakan template manual. Error: ${error.message}</p></div>`;
+                    }
+                };
+
+                const createHOTSforRPP = async () => { 
+                    const prompt = `Buat instrumen penilaian HOTS untuk jenjang ${jenjang} mapel ${mapel} dg tujuan: "${tp.text}". Buat 5 soal PG (A-E) & 2 uraian. Sertakan kunci PG & pembahasan uraian. Jawab dlm format JSON dg kunci "pilihan_ganda" & "uraian".`; 
+                    const schema = { type: "OBJECT", properties: { "pilihan_ganda": { type: "ARRAY", items: { type: "OBJECT", properties: { "pertanyaan": { "type": "STRING" }, "opsi": { type: "OBJECT", properties: { "A": { "type": "STRING" }, "B": { "type": "STRING" }, "C": { "type": "STRING" }, "D": { "type": "STRING" }, "E": { "type": "STRING" } }, required: ["A", "B", "C", "D", "E"] }, "kunci": { "type": "STRING" } }, required: ["pertanyaan", "opsi", "kunci"] } }, "uraian": { type: "ARRAY", items: { type: "OBJECT", properties: { "pertanyaan": { "type": "STRING" }, "pembahasan": { "type": "STRING" } }, required: ["pertanyaan", "pembahasan"] } } }, required: ["pilihan_ganda", "uraian"] }; 
+                    try { 
+                        const aicontent = await callGeminiAPI(prompt, schema); 
+                        
+                        let pgHtml = ''; 
+                        (aicontent.pilihan_ganda || []).forEach(soal => { 
+                            if (soal && soal.opsi) {
+                                pgHtml += `<li class="mt-4">${soal.pertanyaan}<ol type="A" class="ml-8 list-none p-0"><li>A. ${soal.opsi.A}</li><li>B. ${soal.opsi.B}</li><li>C. ${soal.opsi.C}</li><li>D. ${soal.opsi.D}</li><li>E. ${soal.opsi.E}</li></ol></li>`; 
+                            }
+                        }); 
+                        
+                        const kunciJawaban = (aicontent.pilihan_ganda || []).map((soal, index) => `${index + 1}. ${soal.kunci}`).join('<br>'); 
+                        
+                        let uraianHtml = ''; 
+                        (aicontent.uraian || []).forEach(soal => { 
+                             uraianHtml += `<li class="mt-4"><p>${soal.pertanyaan}</p><p class="mt-2"><strong>Pembahasan:</strong> ${soal.pembahasan}</p></li>`; 
+                        }); 
+
+                        const startNumberUraian = (aicontent.pilihan_ganda || []).length + 1;
+                        
+                        return `<div class="lampiran-section mt-8" style="page-break-before: always;">
+                                <h3 class="font-bold text-xl">LAMPIRAN: INSTRUMEN PENILAIAN FORMATIF</h3>
+                                <h4 class="font-semibold text-lg mt-4">I. Soal Pilihan Ganda</h4>
+                                <ol class="list-decimal list-inside space-y-3 mb-4">${pgHtml}</ol>
+                                <h5 class="font-bold">Kunci Jawaban Pilihan Ganda</h5>
+                                <div>${kunciJawaban}</div>
+                                <h4 class="font-semibold text-lg mt-6">II. Soal Uraian</h4>
+                                <ol class="list-decimal list-inside space-y-4" start="${startNumberUraian}">${uraianHtml}</ol>
+                            </div>`; 
+                    } catch (error) { 
+                        console.error("Error generating HOTS:", error); 
+                        return `<div class="lampiran-section mt-8" style="page-break-before: always;"><h3 class="font-bold text-xl">LAMPIRAN: INSTRUMEN PENILAIAN FORMATIF</h3><p class="text-red-500">Gagal membuat soal AI. Error: ${error.message}</p></div>`; 
+                    } 
+                };
+                const createTandaTangan = () => { const parseNameAndNip = (s) => s.includes('/') ? { name: s.split('/')[0].trim(), nip: s.split('/')[1].trim() } : { name: s.trim(), nip: '' }; const guru = parseNameAndNip(rppData.namaGuru); const kepsek = parseNameAndNip(rppData.namaKepsek); const formattedDate = new Date().toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' }); const kepsekNipDisplay = kepsek.nip ? `NIP: ${kepsek.nip}` : 'NIP: .................................'; const guruNipDisplay = guru.nip ? `NIP: ${guru.nip}` : 'NIP: .................................'; return `<div class="mt-12" style="page-break-inside: avoid;"><div class="flex justify-end"><div class="text-center">Garut, ${formattedDate}</div></div><div class="flex justify-between mt-4 text-center"><div class="w-2/5"><p>Mengetahui,</p><p>Kepala Sekolah</p><div class="h-20"></div><p class="font-bold underline">${kepsek.name}</p><p>${kepsekNipDisplay}</p></div><div class="w-2/5"><p class="text-white">.</p><p>Guru Mata Pelajaran</p><div class="h-20"></div><p class="font-bold underline">${guru.name}</p><p>${guruNipDisplay}</p></div></div></div>`; };
+
+                const dplResult = await createDPL(group.topic, tp.text);
+                const sikapRubricHtml = await createSikapRubric(dplResult.data);
+                const desainPembelajaranHtml = await createDesainPembelajaran(group.topic, tp.text, modelPembelajaran);
+                const langkahPembelajaranHtml = await createLangkahPembelajaran(modelPembelajaran, group.topic, alokasiWaktu, jenjang);
+                const lkpdHtml = await createLKPD(modelPembelajaran, group.topic, tp.text, jenjang);
+                const lampiranSoalHtml = await createHOTSforRPP();
+                
+                finalHtml += `
+                    <div class="rpp-section mt-8" style="page-break-after: always;">
+                        <h2 class="text-center font-bold text-2xl mb-1">RENCANA PELAKSANAAN PEMBELAJARAN (RPP)</h2>
+                        <h3 class="text-center font-bold text-xl mb-4">PERTEMUAN KE-${rppCounter}</h3>
+                        ${createIdentitas()}
+                        ${dplResult.html}
+                        <h4 class="font-bold text-lg mt-4 mb-2">C. TUJUAN PEMBELAJARAN</h4>
+                        <p class="p-2 bg-gray-100 rounded">${tp.text}</p>
+                        ${desainPembelajaranHtml}
+                        ${langkahPembelajaranHtml}
+                        <h4 class="font-bold text-lg mt-4 mb-2">F. ASESMEN PEMBELAJARAN</h4><ol class="list-decimal list-inside space-y-2"><li><strong>Asesmen Sikap:</strong> Penilaian sikap (dalam pembelajaran) dilakukan melalui observasi selama kegiatan pembelajaran menggunakan rubrik yang terlampir.</li><li><strong>Asesmen Formatif (Kognitif & Keterampilan):</strong> Dilakukan selama proses pembelajaran melalui diskusi, dan penilaian hasil LKPD untuk memantau pemahaman dan keterampilan siswa. Rubrik penilaian LKPD terlampir.</li><li><strong>Asesmen Sumatif:</strong> Dilakukan di akhir unit pembelajaran melalui tes tulis atau penilaian produk/proyek yang mencakup semua tujuan pembelajaran dalam unit ini.</li></ol>
+                        ${createTandaTangan()}
+                    </div>
+                    ${sikapRubricHtml}
+                    ${lkpdHtml}
+                    ${lampiranSoalHtml}
+                    `;
+            }
+        }
+        
+        const asesmenSumatifHtml = await createAsesmenSumatif(rppData.cp_full_text, isPjblUsed);
+        finalHtml += asesmenSumatifHtml;
+        
+        const lampiranAkhirHtml = await createLampiranAkhir(rppData.cp_full_text, jenjang, mapel);
+        finalHtml += lampiranAkhirHtml;
+
+        finalHtml += `</div>`;
+        rppOutputContainer.innerHTML = finalHtml;
+        rppOutputContainer.classList.remove('hidden');
+        rppOutputContainer.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    async function createAsesmenSumatif(cp_full_text, isPjblUsed) { 
+        const prompt = `Anda ahli evaluasi pendidikan jenjang ${rppData.jenjang}. Berdasarkan CP: "${cp_full_text}", buat: 1. 30 soal PG HOTS (C4-C6) dg opsi A-E. 2. 10 soal uraian HOTS. 3. 1 ide tugas proyek sumatif. Jawab dalam format JSON dg kunci: "pilihan_ganda", "uraian", "proyek_sumatif".`; 
+        
+        const schema = { 
+            type: "OBJECT", 
+            properties: { 
+                "pilihan_ganda": { 
+                    type: "ARRAY", 
+                    items: { 
+                        type: "OBJECT", 
+                        properties: { 
+                            "pertanyaan": { "type": "STRING" }, 
+                            "opsi": { 
+                                type: "OBJECT", 
+                                properties: { "A": { "type": "STRING" }, "B": { "type": "STRING" }, "C": { "type": "STRING" }, "D": { "type": "STRING" }, "E": { "type": "STRING" } },
+                                required: ["A", "B", "C", "D", "E"]
+                            }, 
+                            "kunci": { "type": "STRING" } 
+                        }, 
+                        required: ["pertanyaan", "opsi", "kunci"] 
+                    } 
+                }, 
+                "uraian": { 
+                    type: "ARRAY", 
+                    items: { 
+                        type: "OBJECT", 
+                        properties: { 
+                            "pertanyaan": { "type": "STRING" }, 
+                            "pembahasan_jawaban": { "type": "STRING" } 
+                        },
+                        required: ["pertanyaan", "pembahasan_jawaban"]
+                    } 
+                }, 
+                "proyek_sumatif": { 
+                    type: "OBJECT", 
+                    properties: { 
+                        "judul": { "type": "STRING" }, 
+                        "latar_belakang": { "type": "STRING" }, 
+                        "tujuan": { "type": "STRING" }, 
+                        "langkah_langkah": { "type": "STRING" }, 
+                        "rubrik_penilaian": { "type": "STRING" } 
+                    } 
+                } 
+            }, 
+            required: ["pilihan_ganda", "uraian", "proyek_sumatif"] 
+        };
+
+        try { 
+            const aicontent = await callGeminiAPI(prompt, schema); 
+            let html = `<div class="asesmen-sumatif-section mt-8" style="page-break-before: always;"><h2 class="text-center font-bold text-2xl mb-4">ASESMEN SUMATIF</h2>`; 
+            html += `<h3 class="font-bold text-xl mt-6 mb-2">I. SOAL PILIHAN GANDA</h3><ol class="list-decimal list-inside space-y-3">`; 
+            (aicontent.pilihan_ganda || []).forEach(soal => { 
+                if (soal && soal.opsi) {
+                    html += `<li>${soal.pertanyaan}<ol type="A" class="ml-6 list-none p-0"><li>A. ${soal.opsi.A}</li><li>B. ${soal.opsi.B}</li><li>C. ${soal.opsi.C}</li><li>D. ${soal.opsi.D}</li><li>E. ${soal.opsi.E}</li></ol></li>`; 
+                }
+            }); 
+            html += `</ol>`; 
+            html += `<h3 class="font-bold text-xl mt-8 mb-2">II. SOAL URAIAN</h3><ol class="list-decimal list-inside space-y-4">`; 
+            (aicontent.uraian || []).forEach(soal => { html += `<li>${soal.pertanyaan}</li>`; }); 
+            html += `</ol>`; 
+            if(isPjblUsed && aicontent.proyek_sumatif) { 
+                const proyek = aicontent.proyek_sumatif; 
+                html += `<h3 class="font-bold text-xl mt-8 mb-2">III. TUGAS PROYEK</h3><div class="space-y-3"><p><strong>Judul Proyek:</strong> ${proyek.judul}</p><p><strong>Latar Belakang:</strong> ${proyek.latar_belakang}</p><p><strong>Tujuan Proyek:</strong> ${proyek.tujuan}</p><div><strong>Langkah Pengerjaan:</strong><div class="ml-4">${proyek.langkah_langkah.replace(/\n/g, '<br>')}</div></div><div><strong>Rubrik Penilaian:</strong><div class="ml-4">${proyek.rubrik_penilaian.replace(/\n/g, '<br>')}</div></div></div>`; 
+            } 
+            
+            html += `<div class="kunci-jawaban-section mt-8" style="page-break-before: always;"><h3 class="font-bold text-xl mb-4">KUNCI JAWABAN & PEMBAHASAN</h3>`;
+            
+            html += `<h4 class="font-semibold text-lg mt-4">Kunci Jawaban Pilihan Ganda</h4><ol class="list-decimal grid grid-cols-5 gap-x-8 gap-y-2" style="list-style-position: inside;">`; 
+            (aicontent.pilihan_ganda || []).forEach(soal => { 
+                html += `<li>${soal.kunci}</li>`;
+            }); 
+            html += `</ol>`;
+            
+            html += `<h4 class="font-semibold text-lg mt-6">Pembahasan Soal Uraian</h4><ol class="list-decimal list-inside space-y-4">`; 
+            (aicontent.uraian || []).forEach(soal => { 
+                html += `<li><p><strong>Pertanyaan:</strong> ${soal.pertanyaan}</p><p><strong>Pembahasan:</strong> ${soal.pembahasan_jawaban}</p></li>`; 
+            }); 
+            html += `</ol></div></div>`; 
+
+            return html; 
+        } catch (error) { 
+            console.error("Error generating Asesmen Sumatif:", error); 
+            return `<div class="asesmen-sumatif-section mt-8"><h2 class="text-center font-bold text-2xl mb-4">SOAL ASESMEN SUMATIF</h2><p class="text-red-500">Gagal membuat asesmen sumatif. Error: ${error.message}</p></div>`; 
+        } 
+    }
+    
+    function renderMarkdown(text) {
+        text = text.replace(/^## (.*$)/gim, '<h4 class="font-bold text-lg mt-4 mb-2">$1</h4>');
+        text = text.replace(/^### (.*$)/gim, '<h5 class="font-semibold text-md mt-3 mb-1">$1</h5>');
+        text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        text = text.replace(/\*(.*?)\*/g, '<em>$1</em>');
+        text = text.replace(/^\* (.*$)/gim, '<li>$1</li>');
+        text = text.replace(/<\/li>\n<li>/gim, '</li><li>');
+        text = text.replace(/(<li>.*<\/li>)/gs, '<ul class="list-disc list-inside ml-4 space-y-1">$1</ul>');
+        text = text.split(/\n{2,}/).map(p => {
+            if (p.startsWith('<ul class="')) return p;
+            return p.trim() ? `<p>${p.replace(/\n/g, '<br>')}</p>` : '';
+        }).join('');
+        text = text.replace(/<p><ul/g, '<ul').replace(/<\/ul><\/p>/g, '</ul>');
+        return text;
+    }
+
+    async function createLampiranAkhir(cp_full_text, jenjang, mapel) {
+        const prompt = `Anda adalah seorang penulis buku ajar Kurikulum Merdeka yang ahli dalam menyederhanakan konsep kompleks.
+        Berdasarkan informasi berikut:
+        - Jenjang: "${jenjang}"
+        - Mata Pelajaran: "${mapel}"
+        - Capaian Pembelajaran (CP) Utuh: "${cp_full_text}"
+
+        Tugas Anda:
+        1.  **Buat Materi Ajar Esensial**: Susunlah materi ajar yang sangat terstruktur, jelas, dan mudah dipahami, berpedoman pada CP di atas. Prioritaskan konten dari buku teks Kurikulum Merdeka (buku.kemdikbud.go.id) atau sumber akademik yang relevan.
+            - Struktur Materi: Gunakan sub-judul (diawali '##') untuk setiap konsep utama.
+            - Penjelasan: Di bawah setiap sub-judul, berikan definisi atau penjelasan yang ringkas.
+            - Contoh Kontekstual: WAJIB sertakan 1-2 contoh konkret yang relevan dengan kehidupan siswa di Indonesia untuk setiap konsep.
+            - Format: Gunakan format Markdown (misal: '## Judul', '**teks tebal**', '* list').
+        2.  **Buat Glosarium**: Sediakan 10-15 istilah kunci dari materi dengan definisi singkatnya.
+        3.  **Buat Daftar Pustaka**: Tuliskan 5-7 referensi yang mungkin digunakan, utamakan buku teks Kemdikbud, lalu jurnal atau situs edukasi terpercaya.
+
+        Berikan output dalam format JSON yang ketat dengan kunci "materi_ajar", "glosarium", dan "daftar_pustaka".`;
+        
+        const schema = { type: "OBJECT", properties: { "materi_ajar": { "type": "STRING" }, "glosarium": { type: "ARRAY", items: { type: "OBJECT", properties: { "istilah": { "type": "STRING" }, "definisi": { "type": "STRING" } } } }, "daftar_pustaka": { type: "ARRAY", items: { "type": "STRING" } } }, required: ["materi_ajar", "glosarium", "daftar_pustaka"] };
+        try {
+            const aicontent = await callGeminiAPI(prompt, schema);
+            const renderedMateri = renderMarkdown(aicontent.materi_ajar);
+
+            let html = `<div class="lampiran-akhir-section mt-8" style="page-break-before: always;"><h2 class="text-center font-bold text-2xl mb-4">LAMPIRAN MATERI AJAR ESENSIAL</h2><div class="prose max-w-none">${renderedMateri}</div></div>`;
+            html += `<div class="lampiran-akhir-section mt-8" style="page-break-before: always;"><h2 class="text-center font-bold text-2xl mb-4">GLOSARIUM</h2><div class="space-y-3">`; aicontent.glosarium.forEach(item => { html += `<p><strong>${item.istilah}:</strong> ${item.definisi}</p>`; }); html += `</div></div>`;
+            html += `<div class="lampiran-akhir-section mt-8" style="page-break-before: always;"><h2 class="text-center font-bold text-2xl mb-4">DAFTAR PUSTAKA</h2><ul class="list-disc list-inside space-y-2">`; aicontent.daftar_pustaka.forEach(item => { html += `<li>${item}</li>`; }); html += `</ul></div>`;
+            return html;
+        } catch (error) { console.error("Error generating Lampiran Akhir:", error); return `<div class="lampiran-akhir-section mt-8"><h2 class="text-center font-bold text-2xl mb-4">LAMPIRAN</h2><p class="text-red-500">Gagal membuat lampiran. Error: ${error.message}</p></div>`; }
+    }
+    
+    function handlePrint() {
+        const parseName = (s) => s.includes('/') ? s.split('/')[0].trim() : s.trim(); const fileName = `RPP ${rppData.mapel} ${rppData.kelasSemester.replace(/\s\/\s/g, '-')} Fase ${rppData.fase} ${parseName(rppData.namaGuru)}`; const content = document.getElementById('rpp-content-to-print').innerHTML; const printWindow = window.open('', '_blank'); printWindow.document.open();
+        printWindow.document.write(`
+            <html><head><title>${fileName}</title>
+            
+            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+            <style>
+                @page { size: A4; margin: 2cm; }
+                body {
+                    font-family: 'Inter', 'Calibri', 'Segoe UI', sans-serif;
+                    line-height: 1.5;
+                    font-size: 11pt;
+                    color: #333;
+                }
+                h2, h3, h4, h5 {
+                    font-weight: 700;
+                    margin-top: 1.5rem;
+                    margin-bottom: 0.75rem;
+                    color: #0d9488;
+                }
+                h2 {
+                    font-size: 16pt;
+                    text-align: center;
+                    border-bottom: 2px solid #0d9488;
+                    padding-bottom: 0.5rem;
+                }
+                h3 {
+                    font-size: 13pt;
+                    color: #0f766e;
+                    border-left: 4px solid #14b8a6;
+                    padding-left: 0.75rem;
+                }
+                h4 {
+                    font-size: 12pt;
+                    color: #334155;
+                }
+                h5 {
+                    font-size: 11pt;
+                    font-weight: 600;
+                    color: #475569;
+                }
+                p, li {
+                    margin-bottom: 0.3rem;
+                    text-align: justify;
+                }
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin-top: 0.5rem;
+                    margin-bottom: 1.5rem;
+                    font-size: 10pt;
+                }
+                th, td {
+                    border: 1px solid #e2e8f0;
+                    padding: 0.6rem;
+                    text-align: left;
+                    vertical-align: top;
+                }
+                th {
+                    background-color: #f0f9ff;
+                    font-weight: 600;
+                    color: #0f766e;
+                }
+                h4:contains('IDENTITAS MODUL') + table,
+                h4:contains('IDENTITAS MODUL') + table td {
+                    border: none !important;
+                    padding: 2px 0;
+                }
+                .langkah-pendahuluan { border-left: 3px solid #3b82f6; padding-left: 1rem; margin-top: 1rem; }
+                .langkah-inti { border-left: 3px solid #22c55e; padding-left: 1rem; margin-top: 1rem; }
+                .langkah-penutup { border-left: 3px solid #f59e0b; padding-left: 1rem; margin-top: 1rem; }
+                .lkpd-page { border: 2px solid #0d9488; padding: 1cm; border-radius: 10px; }
+                .lkpd-page h4, .rubrik-page h4 { text-align: center; }
+                .rpp-section, .lampiran-section, .asesmen-sumatif-section, .kunci-jawaban-section, .lampiran-akhir-section, .lkpd-page, .rubrik-page, .sikap-rubric-page {
+                    page-break-before: always;
+                }
+                .rpp-section:first-of-type { page-break-before: avoid; }
+                hr { display: none; }
+                .rpp-footer {
+                    display: block;
+                    text-align: right;
+                    margin-top: 2cm;
+                    font-size: 8pt;
+                    font-style: italic;
+                    color: #94a3b8;
+                }
+                .list-decimal { list-style-type: decimal; } 
+                .list-disc { list-style-type: disc; } 
+                .list-inside { list-style-position: inside; }
+            </style>
+            </head><body>${content}</body></html>`);
+        printWindow.document.close();
+        setTimeout(() => { printWindow.focus(); printWindow.print(); }, 500);
+    }
+});
+</script>
+
+</body>
+</html>
