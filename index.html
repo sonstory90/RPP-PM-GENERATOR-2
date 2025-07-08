@@ -435,7 +435,7 @@ document.addEventListener('DOMContentLoaded', function() {
         validationError.classList.add('hidden'); return true;
     }
 
-    async function callGeminiAPI(prompt, schema, retries = 3, delayMs = 4000) {
+    async function callGeminiAPI(prompt, schema, retries = 3, delayMs = 8000) {
         // FIX: Reverted to the public Google API endpoint.
         const apiKey = "AIzaSyAN8dgJbMptmWeG8Ekq6KGvHkl990efKGs";
         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
